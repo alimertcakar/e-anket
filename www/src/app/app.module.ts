@@ -9,6 +9,7 @@ import { ContentTwoComponent } from './content-two/content-two.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentAciklamaComponent } from './content-aciklama/content-aciklama.component';
 import { AnketOlusturComponent } from './anket-olustur/anket-olustur.component';
+import { HeroComponent } from './hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AnketOlusturComponent } from './anket-olustur/anket-olustur.component';
     ContentTwoComponent,
     FooterComponent,
     ContentAciklamaComponent,
-    AnketOlusturComponent
+    AnketOlusturComponent,
+    HeroComponent
   ],
   imports: [
     BrowserModule,
