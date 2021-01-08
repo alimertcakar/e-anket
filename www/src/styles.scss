@@ -1007,6 +1007,13 @@ section {
 .featured-services .icon-box:hover .icon i {
   color: #fff;
 }
+@media all and (max-width:768px){
+  .featured-services{
+    position:relative;
+    top:150px;
+    padding-top:25px;
+  }
+}
 
 /*--------------------------------------------------------------
 # Cta
@@ -2052,24 +2059,27 @@ section {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #999;
+  // box-shadow: inset 0 0 5px #999;
   border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #555;
+  // background: 
   border-radius: 10px;
+    box-shadow: inset 0 0 10px 10px #555;
+    border: solid 3px transparent;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #777;
+      box-shadow: inset 0 0 10px 10px #777;
+
 }
 
 /*çal keke */

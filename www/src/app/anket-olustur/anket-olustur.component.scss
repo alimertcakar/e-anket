@@ -2,9 +2,15 @@
   height: 400px;
   justify-content: center;
   align-items: center;
+  @media all and (max-width:768px){
+      height: 474px;
+  }
 }
 
 .anket-container-item {
+  @media all and (max-width:768px){
+    padding-bottom:220px;
+  }
   background-color: #fff;
   border: 1px solid #e8e8e8;
   padding: 20px 25px;
