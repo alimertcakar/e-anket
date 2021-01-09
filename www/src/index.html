@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Eanket</title>
@@ -7,7 +8,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
   <app-root></app-root>
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-firestore.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyARfIEM0Q3y179bMVdFiaTMBUO2vp4YXkA",
+      authDomain: "angular-eanket.firebaseapp.com",
+      projectId: "angular-eanket",
+      storageBucket: "angular-eanket.appspot.com",
+      messagingSenderId: "1039005887104",
+      appId: "1:1039005887104:web:74096ee389bf70a7efd465"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+  </script>
 </body>
+
 </html>
