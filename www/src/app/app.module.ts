@@ -11,6 +11,20 @@ import { ContentAciklamaComponent } from './content-aciklama/content-aciklama.co
 import { AnketOlusturComponent } from './anket-olustur/anket-olustur.component';
 import { HeroComponent } from './hero/hero.component';
 
+// firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+const config = {
+  apiKey: 'AIzaSyARfIEM0Q3y179bMVdFiaTMBUO2vp4YXkA',
+  authDomain: 'angular-eanket.firebaseapp.com',
+  projectId: 'angular-eanket',
+  storageBucket: 'angular-eanket.appspot.com',
+  messagingSenderId: '1039005887104',
+  appId: '1:1039005887104:web:74096ee389bf70a7efd465',
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,13 +34,16 @@ import { HeroComponent } from './hero/hero.component';
     FooterComponent,
     ContentAciklamaComponent,
     AnketOlusturComponent,
-    HeroComponent
+    HeroComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(config),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: Window, useValue: window }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
