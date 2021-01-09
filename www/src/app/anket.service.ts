@@ -18,8 +18,7 @@ export class AnketService {
 
   async getAnket(id) {
     console.log(id);
-    const response = await this.db.collection('survey').doc(id).get();
-    console.log(response);
+    const response = await this.db.collection('survey').doc(id).valueChanges();
     return response;
   }
 }

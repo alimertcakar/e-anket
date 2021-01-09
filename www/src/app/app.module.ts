@@ -15,6 +15,7 @@ import { HeroComponent } from './hero/hero.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { OlusturulanAnketComponent } from './olusturulan-anket/olusturulan-anket.component';
 
 const config = {
   apiKey: 'AIzaSyARfIEM0Q3y179bMVdFiaTMBUO2vp4YXkA',
@@ -35,6 +36,7 @@ const config = {
     ContentAciklamaComponent,
     AnketOlusturComponent,
     HeroComponent,
+    OlusturulanAnketComponent,
   ],
   imports: [
     BrowserModule,
