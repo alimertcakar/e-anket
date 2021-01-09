@@ -9,6 +9,7 @@ import { AnketService } from '../anket.service';
 export class AnketOlusturComponent implements OnInit {
   anket: any;
   isAnketModalOn: boolean;
+  anketId: string;
   curAnketData: any;
   constructor(anket: AnketService) {
     this.anket = anket;
@@ -17,11 +18,13 @@ export class AnketOlusturComponent implements OnInit {
 
   async anketOlustur() {
     let response = await this.anket.anketOlustur();
+    this.anketId = response.id;
     let createdAnket = await this.anket.getAnket(response.id);
     createdAnket.subscribe((data) => {
       console.log(data);
       this.curAnketData = data;
       this.isAnketModalOn = true;
+      console.log(this.isAnketModalOn);
     });
   }
 

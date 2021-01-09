@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-olusturulan-anket',
@@ -6,7 +6,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./olusturulan-anket.component.scss'],
 })
 export class OlusturulanAnketComponent implements OnInit {
-  constructor() {}
+  onShowMe: boolean;
+  constructor() {
+    this.onShowMe = true;
+  }
   @Input() curAnketData: any;
+  @Input() onShow: boolean;
+  @Input() anketId: string;
+  gizle() {
+    this.onShowMe = false;
+  }
   ngOnInit(): void {}
 }
