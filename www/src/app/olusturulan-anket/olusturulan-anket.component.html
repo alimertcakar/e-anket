@@ -12,7 +12,7 @@
 
         Anketin Oluşturuldu.
         Bu linkten ulaşabilirsin:
-        <a href="/anket/{{anketId}}">{{anketId}}</a>
+        <a [routerLink]="['/anket',anketId]">{{anketId}}</a>
         Anket Detayı:
         {{curAnketData?.question}}
         <div *ngFor="let anketAns of curAnketData?.answers">{{anketAns}}</div>
