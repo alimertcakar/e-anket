@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import firebase from 'firebase/app';
+import { ConsoleReporter } from 'jasmine';
 
 @Injectable({
   providedIn: 'root',
@@ -25,10 +27,37 @@ export class AnketService {
     return response;
   }
 
-  async updateAnketVote(id, ansId) {
-    const response = await this.db
-      .collection('survey')
-      .doc(id)
-      .update({ 'answers[ansId].vote': 'FieldValue.increment(1)' });
+  async updateAnketVote(id, ans, ansId) {
+    let response;
+    const prevAns = await this.db.collection('survey').doc(id).valueChanges();
+    prevAns.subscribe(async (d) => {
+      //Güncel oy sayısını al
+      let prevVote = d.answers.filter((ansObj) => ansObj.answer == ans)[0]
+        .votes;
+
+      //eski array'i sil
+      this.db
+        .collection('survey')
+        .doc(id)
+        .update({
+          answers: firebase.firestore.FieldValue.arrayRemove({
+            answer: ans,
+            votes: prevVote,
+          }),
+        });
+
+      // 1 arttır yeni array ekle
+      response = await this.db
+        .collection('survey')
+        .doc(id)
+        .update({
+          answers: firebase.firestore.FieldValue.arrayUnion({
+            answer: ans,
+            votes: ++prevVote,
+          }),
+        });
+    });
+
     return response;
+  }
 }

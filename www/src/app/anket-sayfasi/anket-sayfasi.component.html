@@ -6,7 +6,7 @@
         <h1 style="font-size:22px; text-align:center" class="mt-2"> {{anketDetayi?.question}} </h1>
         <div *ngFor="let anketAns of anketDetayi?.answers; let i = index;">
           <button class="btn w-100 mt-2 p-1" style="border: 1px solid #efefef; border-radius:25px;"
-            (click)="cevapla(i)">
+            (click)="cevapla(anketAns.answer,i)">
             {{anketAns.answer}}
           </button>
           <div>

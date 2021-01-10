@@ -22,7 +22,7 @@ export class AnketSayfasiComponent implements OnInit {
       });
     });
   }
-  cevapla(ansId) {
-    this.anket.updateAnketVote(this.anketId, ansId);
+  cevapla(ans, ansId) {
+    this.anket.updateAnketVote(this.anketId, ans, ansId);
   }
 }
