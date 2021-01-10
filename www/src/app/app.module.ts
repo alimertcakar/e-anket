@@ -26,8 +26,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 //material
 import { MaterialImports } from './material-module';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSliderModule } from '@angular/material/slider';
 
 const config = {
   apiKey: 'AIzaSyARfIEM0Q3y179bMVdFiaTMBUO2vp4YXkA',
