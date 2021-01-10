@@ -1,9 +1,16 @@
 <div style="position: relative;top: 65px;">
-    <div class="container pb-5">
-        <div style="display:grid; grid-template: 600px / 1fr 4fr 1fr">
-            <div style="grid-column-start: 2;" class="text-center mt-2">
-                <p>anket-sayfasi works!</p>
-            </div>
+  <div class="container pb-5">
+    <div style="display:grid; grid-template: 600px / 1fr 4fr 1fr">
+      <div style="grid-column-start: 2;" class="text-center mt-2">
+        Anket Detayı:
+        <h1 style="font-size:22px; text-align:center" class="mt-2"> {{anketDetayi?.question}} </h1>
+        <div *ngFor="let anketAns of anketDetayi?.answers; let i = index;">
+          <button class="btn w-100 mt-2 p-1" style="border: 1px solid #efefef; border-radius:25px;"
+            (click)="cevapla(i)">
+            {{anketAns}}
+          </button>
         </div>
+      </div>
     </div>
+  </div>
 </div>
