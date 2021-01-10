@@ -7,7 +7,6 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'anket/:id', component: AnketSayfasiComponent },
-  { path: 'login', component: LoginRegisterComponent },
 ];
 
 @NgModule({

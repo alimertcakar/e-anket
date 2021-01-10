@@ -19,7 +19,9 @@ import { NgForm } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { OlusturulanAnketComponent } from './olusturulan-anket/olusturulan-anket.component';
+import { LoginRegisterComponent } from './login-register/login-register.component';
 import { AnketSayfasiComponent } from './anket-sayfasi/anket-sayfasi.component';
 import { HomeComponent } from './home/home.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,6 +50,7 @@ const config = {
     HeroComponent,
     OlusturulanAnketComponent,
     AnketSayfasiComponent,
+    LoginRegisterComponent,
     HomeComponent,
   ],
   imports: [
@@ -56,6 +59,7 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
     AngularFireStorageModule,
+    AngularFireAuthModule,
     FormsModule,
     NoopAnimationsModule,
     MaterialImports,

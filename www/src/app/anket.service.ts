@@ -12,11 +12,12 @@ export class AnketService {
   }
   async anketOlustur() {
     const response = await this.db.collection('survey').add({
-      question: 'Benim babam böyle pasta yapmayı nereden öğrendi?',
+      question: document.querySelector('#quest1').value,
       answers: [
-        { answer: 'ne bilem', votes: 0 },
-        { answer: 'babana sor', votes: 0 },
-        { answer: 'doktor otkere sor', votes: 0 },
+        { answer: document.querySelector('#ans1').value, votes: 0 },
+        { answer: document.querySelector('#ans2').value, votes: 0 },
+        { answer: document.querySelector('#ans3').value, votes: 0 },
+        { answer: document.querySelector('#ans4').value, votes: 0 },
       ],
     });
     return response;
