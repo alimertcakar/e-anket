@@ -11,6 +11,10 @@ import { ContentAciklamaComponent } from './content-aciklama/content-aciklama.co
 import { AnketOlusturComponent } from './anket-olustur/anket-olustur.component';
 import { HeroComponent } from './hero/hero.component';
 
+//angular
+import { FormsModule } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+
 // firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -18,6 +22,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { OlusturulanAnketComponent } from './olusturulan-anket/olusturulan-anket.component';
 import { AnketSayfasiComponent } from './anket-sayfasi/anket-sayfasi.component';
 import { HomeComponent } from './home/home.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+//material
+import { MaterialImports } from './material-module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
 
 const config = {
   apiKey: 'AIzaSyARfIEM0Q3y179bMVdFiaTMBUO2vp4YXkA',
@@ -48,7 +58,11 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
     AngularFireStorageModule,
+    FormsModule,
+    NoopAnimationsModule,
+    MaterialImports,
   ],
+  exports: [MaterialImports],
   providers: [{ provide: Window, useValue: window }],
   bootstrap: [AppComponent],
 })
