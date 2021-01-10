@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app';
-import { ConsoleReporter } from 'jasmine';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +30,8 @@ export class AnketService {
   async updateAnketVote(id, ans, ansId) {
     let response;
     const prevAns = await this.db.collection('survey').doc(id).valueChanges();
-    prevAns.subscribe(async (d) => {
+
+    prevAns.pipe(first()).subscribe(async (d: any) => {
       //Güncel oy sayısını al
       let prevVote = d.answers.filter((ansObj) => ansObj.answer == ans)[0]
         .votes;
