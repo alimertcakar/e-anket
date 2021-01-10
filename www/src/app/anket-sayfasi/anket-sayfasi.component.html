@@ -7,8 +7,11 @@
         <div *ngFor="let anketAns of anketDetayi?.answers; let i = index;">
           <button class="btn w-100 mt-2 p-1" style="border: 1px solid #efefef; border-radius:25px;"
             (click)="cevapla(i)">
-            {{anketAns}}
+            {{anketAns.answer}}
           </button>
+          <div>
+            {{anketAns.votes}} oy verildi
+          </div>
         </div>
       </div>
     </div>

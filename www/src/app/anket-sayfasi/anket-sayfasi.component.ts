@@ -11,17 +11,18 @@ import { AnketService } from '../anket.service';
 export class AnketSayfasiComponent implements OnInit {
   constructor(private route: ActivatedRoute, private anket: AnketService) {}
   anketDetayi: any;
-
+  anketId: any;
   ngOnInit(): void {
     this.route.paramMap.subscribe(async (params) => {
       let anketId = params.get('id');
+      this.anketId = anketId;
       let anketDetay = await this.anket.getAnket(anketId);
       anketDetay.subscribe((data) => {
         this.anketDetayi = data;
       });
     });
   }
-  cevapla(i) {
-    console.log(i);
+  cevapla(ansId) {
+    this.anket.updateAnketVote(this.anketId, ansId);
   }
 }
