@@ -14,10 +14,22 @@ export class AnketService {
     const response = await this.db.collection('survey').add({
       question: (<any>document.querySelector('#quest1')).value,
       answers: [
-        { answer: (<any>document.querySelector('#ans1')).value, votes: 0 },
-        { answer:  (<any>document.querySelector('#ans2')).value, votes: 0 },
-        { answer:  (<any>document.querySelector('#ans3')).value, votes: 0 },
-        { answer:  (<any>document.querySelector('#ans4')).value, votes: 0 },
+        {
+          answer: (<HTMLInputElement>document.querySelector('#ans1')).value,
+          votes: 0,
+        },
+        {
+          answer: (<HTMLInputElement>document.querySelector('#ans2')).value,
+          votes: 0,
+        },
+        {
+          answer: (<HTMLInputElement>document.querySelector('#ans3')).value,
+          votes: 0,
+        },
+        {
+          answer: (<HTMLInputElement>document.querySelector('#ans4')).value,
+          votes: 0,
+        },
       ],
     });
     return response;
