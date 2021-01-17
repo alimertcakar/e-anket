@@ -3,8 +3,9 @@
 <div style="position:relative; top:85px " id="about">
 
   <div class="w-100 text-center pb-5 pt-2 d-flex align-items-center justify-content-center flex-wrap"
-    style="height:600px; flex-direction:column ">
-    <form class="form-group d-flex flex-wrap">
+    style="height:600px; flex-direction:row ">
+    <form class="form-group d-flex flex-wrap mr-3"
+      style="width:250px;border: 1px solid #efefef; height:250px;padding:5px;border-radius:5px;">
       <h4 class="w-100 text-left mt-2">Giriş Yap</h4>
       <div class="w-100 text-left">
         <label class="w-100 text-left">E-postanız</label>
@@ -18,7 +19,9 @@
       <button class="btn btn-primary mt-2" (click)="login()">Google ile giriş yap</button>
 
     </form>
-    <form class="form-group d-flex flex-wrap mt-2 pb-4" #registerForm="ngForm" (ngSubmit)="signupEmail(registerForm)">
+    <form class="form-group d-flex flex-wrap pb-4"
+      style="width:250px;border: 1px solid #efefef; height:250px; padding:5px;border-radius:5px;" #registerForm="ngForm"
+      (ngSubmit)="signupEmail(registerForm)">
       <h4 class="w-100 text-left">Kaydol</h4>
 
       <div class="w-100 text-left">
