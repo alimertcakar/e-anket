@@ -20,7 +20,7 @@ export class AnketOlusturComponent implements OnInit {
     let response = await this.anket.anketOlustur();
     this.anketId = response.id;
     let createdAnket = await this.anket.getAnket(response.id);
-    createdAnket.subscribe((data) => {
+    createdAnket[0].subscribe((data) => {
       this.curAnketData = data;
       this.isAnketModalOn = true;
       console.log(this.isAnketModalOn);

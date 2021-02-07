@@ -12,21 +12,35 @@ export class AnketSayfasiComponent implements OnInit {
   constructor(private route: ActivatedRoute, private anket: AnketService) {}
   anketDetayi: any;
   anketId: any;
+  gorsel: any;
   ngOnInit(): void {
     this.route.paramMap.subscribe(async (params) => {
       let anketId = params.get('id');
       this.anketId = anketId;
       let anketDetay = await this.anket.getAnket(anketId);
-      anketDetay.subscribe((data) => {
+      anketDetay[0].subscribe((data) => {
         this.anketDetayi = data;
+        this.gorsel = anketDetay[1];
       });
     });
   }
   cevapla(ans, ansId) {
     this.anket.updateAnketVote(this.anketId, ans, ansId);
   }
+
   gorselYukle() {
-    let dosya = document.querySelector('#gorselYukle');
-    this.anket.gorselYukle(dosya, this.anketId);
+    let gorsel = document.querySelector('#gorselYukle');
+    this.encodeImageFileAsURL(gorsel);
+  }
+  encodeImageFileAsURL(dosya) {
+    let anketRef = this.anket;
+    let thisRef = this;
+    console.log(dosya);
+    var file = dosya.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      anketRef.gorselYukle(dosya, thisRef.anketId);
+    };
+    reader.readAsDataURL(file);
   }
 }
