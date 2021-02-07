@@ -35,6 +35,17 @@ export class AnketService {
     return response;
   }
 
+  async gorselYukle(dosya, id) {
+    var metadata = {
+      contentType: 'image/jpeg',
+    };
+    var storageRef = firebase.storage().ref();
+    var dosyaRef = storageRef.child(id);
+    dosyaRef.put(dosya, metadata).then((snapshot) => {
+      console.log('Uploaded a blob or file!');
+    });
+  }
+
   async getAnket(id) {
     const response = await this.db.collection('survey').doc(id).valueChanges();
     return response;

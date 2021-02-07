@@ -1,10 +1,10 @@
 <div class="anket-container d-flex">
   <div class="anket-container-item">
-    <textarea id="quest1" value="Kaç yaşındasın sen?">Kaç yaşındasın sen?</textarea>
-    <input id="ans1" value="a -  Ne saçma sapan sorular bunlar?">
-    <input id="ans2" value="b -  Hayır yaşını söyle bana">
-    <input id="ans3" value="c -  Böyle mi sorulur bu">
-    <input id="ans4" value="d -  İçkiliydi bilmem ne">
+    <textarea id="quest1" value="Sormak istediğim soru...?">Sormak istediğim soru...?</textarea>
+    <input id="ans1" value="a -  Cevap">
+    <input id="ans2" value="b -  Cevap">
+    <input id="ans3" value="c -  Cevap">
+    <input id="ans4" value="d -  Cevap">
     <button (click)="anketOlustur()">Anket Oluştur</button>
   </div>
   <app-olusturulan-anket [curAnketData]="curAnketData" [onShow]="isAnketModalOn" [anketId]="anketId">

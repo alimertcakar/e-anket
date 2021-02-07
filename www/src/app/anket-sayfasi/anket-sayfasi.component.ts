@@ -25,4 +25,8 @@ export class AnketSayfasiComponent implements OnInit {
   cevapla(ans, ansId) {
     this.anket.updateAnketVote(this.anketId, ans, ansId);
   }
+  gorselYukle() {
+    let dosya = document.querySelector('#gorselYukle');
+    this.anket.gorselYukle(dosya, this.anketId);
+  }
 }
