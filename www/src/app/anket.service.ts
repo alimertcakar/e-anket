@@ -22,6 +22,14 @@ const toBase64 = (file) =>
   });
 const fetchAsBlob = (url) => fetch(url).then((response) => response.blob());
 
+const blobToData = (blob: Blob) => {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+};
+
 const convertBlobToBase64 = (blob) =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -89,20 +97,24 @@ export class AnketService {
       var storageRef = firebase.storage().ref();
       var gorselUrl = await storageRef.child(id).getDownloadURL();
       var gorsel = await fetch(`
-        https://api.allorigins.win/get?url=${encodeURIComponent(gorselUrl)}`)
-        .then((response) => response.blob())
-        .then((images) => {
-          var reader = new FileReader();
-          reader.readAsDataURL(images);
-          reader.onloadend = function () {
-            var base64data = reader.result;
-            gorsel64 = base64data;
-            console.log(gorsel64);
-          };
-          // blobToImage(images).then((img) => console.log(img));
-          // let outside = URL.createObjectURL(images);
-          // console.log(outside);
-        });
+        https://api.allorigins.win/get?url=${encodeURIComponent(gorselUrl)}`);
+      const blob = await gorsel.blob();
+      gorsel64 = await blob.text();
+
+      var base64data = await blobToData(blob);
+      // console.log(base64data.split(',')[1]);
+      return [response, base64data.split(',')[1]];
+
+      // console.log(base64data.split(',')[1]);
+      //  const images = ((images) => {
+      //     reader.onloadend = function () {
+      //       gorsel64 = base64data;
+      //       console.log(gorsel64);
+      //     };
+      //     // blobToImage(images).then((img) => console.log(img));
+      //     // let outside = URL.createObjectURL(images);
+      //     // console.log(outside);
+      //   });
       console.log(gorsel64);
     } catch (e) {
       console.log(e);

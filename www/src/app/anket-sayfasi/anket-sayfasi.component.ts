@@ -21,6 +21,9 @@ export class AnketSayfasiComponent implements OnInit {
       anketDetay[0].subscribe((data) => {
         this.anketDetayi = data;
         this.gorsel = anketDetay[1];
+        var image = new Image();
+        image.src = 'data:image/png;base64,' + anketDetay[1];
+        document.body.appendChild(image);
       });
     });
   }
