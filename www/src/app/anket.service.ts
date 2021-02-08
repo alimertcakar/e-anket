@@ -82,9 +82,7 @@ export class AnketService {
     let dosya64 = await toBase64(dosya.files[0]);
     console.log(dosya64);
     dosyaRef
-      .putString(dosya64.split(',')[1], 'base64', 'base64', {
-        contentType: 'image/png',
-      })
+      .putString(dosya64.split(',')[1])
       .then((snapshot) => {
         console.log('Uploaded a blob or file!');
       });
@@ -98,12 +96,15 @@ export class AnketService {
       var gorselUrl = await storageRef.child(id).getDownloadURL();
       var gorsel = await fetch(`
         https://api.allorigins.win/get?url=${encodeURIComponent(gorselUrl)}`);
-      const blob = await gorsel.blob();
-      gorsel64 = await blob.text();
+      let gorselbase64 = await gorsel.text();
+      gorselbase64 = JSON.parse(gorselbase64);
+      console.log(gorselbase64)
+      // const blob = await gorsel.blob();
+      // gorsel64 = await blob.text();
 
-      var base64data = await blobToData(blob);
+      // var base64data = await blobToData(blob);
       // console.log(base64data.split(',')[1]);
-      return [response, base64data.split(',')[1]];
+      return [response, gorselbase64.contents];
 
       // console.log(base64data.split(',')[1]);
       //  const images = ((images) => {
