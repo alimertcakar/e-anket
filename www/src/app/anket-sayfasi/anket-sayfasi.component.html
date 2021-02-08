@@ -1,8 +1,13 @@
 <div style="position: relative;top: 65px;">
   <div class="container pb-5">
     <div class="w-100-text-center d-flex justify-content-center">
-      <div>Görsel: <img class="anket__gorsel" [src]="gorsel">
-        <div class="anket__gorsel-data">Gorsel data: {{gorsel}}</div>
+      <div *ngIf="gorsel != 'data:image/png;base64,bulunmadi'">
+        <div>Görsel: <img class="anket__gorsel" [src]="gorsel">
+          <div class="anket__gorsel-data">Gorsel data: {{gorsel}}</div>
+        </div>
+      </div>
+      <div *ngIf="gorsel == 'data:image/png;base64,bulunmadi'">
+        <div style="font-weight:300; color:gray;">Anket görseli eklenmemiş.</div>
       </div>
     </div>
     <div style="display:grid; grid-template: 400px / 1fr 4fr 1fr">

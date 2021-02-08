@@ -36,16 +36,15 @@ export class AnketSayfasiComponent implements OnInit {
     this.encodeImageFileAsURL(gorsel);
   }
   encodeImageFileAsURL(dosya) {
-    let ngOnInitRef = this.ngOnInit;
-    let anketRef = this.anket;
     let thisRef = this;
+    let anketRef = this.anket;
     console.log(dosya);
     var file = dosya.files[0];
     var reader = new FileReader();
     reader.onloadend = function () {
       anketRef.gorselYukle(dosya, thisRef.anketId).then(() => {
         // location.reload(); <- böyle olmaz tabi :)
-        ngOnInitRef();
+        thisRef.ngOnInit();
       });
     };
     reader.readAsDataURL(file);
