@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app';
 import { first } from 'rxjs/operators';
+interface IGorsel {
+  contents: object;
+}
+
 const blobToImage = (blob) => {
   return new Promise((resolve) => {
     const url = URL.createObjectURL(blob);
@@ -73,38 +77,44 @@ export class AnketService {
   }
 
   async gorselYukle(dosya, id) {
-    // var metadata = {
-    //   contentType: 'image/jpeg',
-    // };
-    var storageRef = firebase.storage().ref();
-    var dosyaRef = storageRef.child(id);
-    console.log(dosya.files[0]);
-    let dosya64 = await toBase64(dosya.files[0]);
-    console.log(dosya64);
-    dosyaRef
-      .putString(dosya64.split(',')[1])
-      .then((snapshot) => {
-        console.log('Uploaded a blob or file!');
-      });
+    return new Promise(async function (resolve, reject) {
+      var storageRef = firebase.storage().ref();
+      var dosyaRef = storageRef.child(id);
+      console.log(dosya.files[0]);
+      let dosya64 = await toBase64(dosya.files[0]);
+      console.log(dosya64);
+      dosyaRef
+        .putString(dosya64.split(',')[1])
+        .then((snapshot) => {
+          resolve('Dosya başarıyla yüklendi.');
+        })
+        .catch((e) => {
+          reject(e);
+        });
+    });
   }
+
+  // var metadata = {
+  //   contentType: 'image/jpeg',
+  // };
 
   async getAnket(id) {
     const response = await this.db.collection('survey').doc(id).valueChanges();
-    let gorsel64 = 'bulunmadi';
+    let gorsel64 = 'bulunmadi'; //anket ilk oluşturulduğunda resim yoksa.
     try {
       var storageRef = firebase.storage().ref();
       var gorselUrl = await storageRef.child(id).getDownloadURL();
       var gorsel = await fetch(`
-        https://api.allorigins.win/get?url=${encodeURIComponent(gorselUrl)}`);
-      let gorselbase64 = await gorsel.text();
+        https://api.allorigins.win/get?url=${encodeURIComponent(gorselUrl)}`); //local'de cors'a takıldım. allorigins cors header'ı ekliyor her isteğe. gerçek sitede normal url'de hata olmaz ama.
+      let gorselbase64: IGorsel | string = await gorsel.text();
       gorselbase64 = JSON.parse(gorselbase64);
-      console.log(gorselbase64)
+      console.log(gorselbase64);
       // const blob = await gorsel.blob();
       // gorsel64 = await blob.text();
 
       // var base64data = await blobToData(blob);
       // console.log(base64data.split(',')[1]);
-      return [response, gorselbase64.contents];
+      return [response, gorselbase64?.contents];
 
       // console.log(base64data.split(',')[1]);
       //  const images = ((images) => {
