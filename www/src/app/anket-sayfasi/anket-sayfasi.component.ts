@@ -17,7 +17,7 @@ export class AnketSayfasiComponent implements OnInit {
     this.route.paramMap.subscribe(async (params) => {
       let anketId = params.get('id');
       this.anketId = anketId;
-      let anketDetay = await this.anket.getAnket(anketId);
+      let anketDetay: Array<any> = await this.anket.getAnket(anketId);
       anketDetay[0].subscribe((data) => {
         this.anketDetayi = data;
         this.gorsel = 'data:image/png;base64,' + anketDetay[1];

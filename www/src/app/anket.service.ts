@@ -81,7 +81,7 @@ export class AnketService {
       var storageRef = firebase.storage().ref();
       var dosyaRef = storageRef.child(id);
       console.log(dosya.files[0]);
-      let dosya64 = await toBase64(dosya.files[0]);
+      let dosya64: string = await toBase64(dosya.files[0]);
       console.log(dosya64);
       dosyaRef
         .putString(dosya64.split(',')[1])
@@ -107,7 +107,7 @@ export class AnketService {
       var gorsel = await fetch(`
         https://api.allorigins.win/get?url=${encodeURIComponent(gorselUrl)}`); //local'de cors'a takıldım. allorigins cors header'ı ekliyor her isteğe. gerçek sitede normal url'de hata olmaz ama.
       let gorselbase64: IGorsel | string = await gorsel.text();
-      gorselbase64 = JSON.parse(gorselbase64);
+      gorselbase64 = <IGorsel>JSON.parse(gorselbase64);
       console.log(gorselbase64);
       // const blob = await gorsel.blob();
       // gorsel64 = await blob.text();
