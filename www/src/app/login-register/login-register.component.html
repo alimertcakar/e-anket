@@ -1,7 +1,5 @@
-<!-- <div>BIKTIM LOGIN-REGISTER AUTHENTICATION YAPMAKTAN YETEEEEEER</div> -->
-
 <div style="position:relative; top:85px " id="about">
-
+  <h2 class="w-100 text-center">Seni tekrar görmek güzel, {{loggedInUser.displayName}}</h2>
   <div class="w-100 text-center pb-5 pt-2 d-flex align-items-center justify-content-center flex-wrap"
     style="height:600px; flex-direction:row ">
     <form class="form-group d-flex flex-wrap mr-3"
@@ -16,7 +14,7 @@
         <input placeholder="Şifreniz" ngModel #password="ngModel" name="password">
       </div>
       <button class="btn btn-primary mt-2" type="submit" style="background-color:blueviolet">Giriş Yap</button>
-      <button class="btn btn-primary mt-2" (click)="login()">Google ile giriş yap</button>
+      <button class="btn btn-primary mt-2" (click)="login();loginGmail()">Google ile giriş yap</button>
 
     </form>
     <form class="form-group d-flex flex-wrap pb-4"
