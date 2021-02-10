@@ -81,10 +81,11 @@ export class AnketService {
       var storageRef = firebase.storage().ref();
       var dosyaRef = storageRef.child(id);
       console.log(dosya.files[0]);
-      let dosya64: string = await toBase64(dosya.files[0]);
+      let dosya64: string | unknown =
+        (await (<unknown>toBase64(dosya.files[0]))) || ('' as string);
       console.log(dosya64);
       dosyaRef
-        .putString(dosya64.split(',')[1])
+        .putString((dosya64 as string).split(',')[1])
         .then((snapshot) => {
           resolve('Dosya başarıyla yüklendi.');
         })
